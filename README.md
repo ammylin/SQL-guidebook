@@ -1,10 +1,10 @@
 # SQL Guidebook
 
 ## Project Description 
-This project serves as a personalized SQL reference guide, demonstrating proficiency in core and advanced PostgreSQL features. The goal is to analyze credit applicant demographics against their monthly credit history records to derive risk-based insights, satisfying requirements for advanced joining, window functions, CTEs, and data cleaning/transformation.
+This project serves as a personalized SQL reference guide. The goal is to analyze credit applicant demographics against their monthly credit history records to derive risk-based insights, satisfying requirements for advanced joining, window functions, CTEs, and data cleaning/transformation.
 
 ## Dataset Overview
-This project utilizes the [Credit Card Approval Prediction](https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction) dataset from Kaggle, which includes two tables: `application_record.csv` and `credit_record.csv`. This dataset links applicant demographics with their monthly credit account status, and captures various aspects of financial history and client background. More about the dataset tables below: 
+This project utilizes the [Credit Card Approval Prediction](https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction) dataset from Kaggle, which includes two tables: `application_record.csv` and `credit_record.csv`. This dataset links applicant demographics with their monthly credit account status and captures various aspects of financial history and client background. More about the dataset tables below: 
 - `application_record.csv`: Provides core applicant demographics, including annual income, education type, family status, housing type, and calculated age.
 - `credit_record.csv`: Provides detailed monthly credit history for each applicant, containing the month-since-application and the applicant's credit status code for that month.
 
@@ -41,8 +41,6 @@ A new feature, age in years, was engineered from the raw days_birth column using
 ```
 ALTER TABLE application_record ADD COLUMN age_years INT;
 Populate Age Column:
-
-SQL
 
 UPDATE application_record
 SET age_years = ABS(days_birth) / 365;
