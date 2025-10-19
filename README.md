@@ -62,7 +62,7 @@ GROUP BY name_family_status
 ORDER BY COUNT(*) DESC
 LIMIT 5;
 ```
-Results (also included in [text](results/1_five_common_family_status.csv)): 
+Results (also included in [Q1](results/1_five_common_family_status.csv)): 
 ![1](img/1.png)
 
 2. What is the average annual income for applicants classified as 'Home Owner' or 'Renter/Other'? Display only those groups where the average income exceeds $150,000. 
@@ -78,7 +78,7 @@ FROM application_record
 GROUP BY applicant_type
 HAVING AVG(amt_income_total) > 150000;
 ```
-Results (also included in [text](results/2_applicant_type.csv)): 
+Results (also included in [Q2](results/2_applicant_type.csv)): 
 ![2](img/2.png)
 
 3. How many applicants are both under 30 years old AND have been employed for less than two years (ABS(days_employed) < 730)?
@@ -104,7 +104,7 @@ SELECT COUNT(*)
 FROM application_record
 WHERE age_years < 30 AND ABS(days_employed) < 730;
 ```
-Results (also included in [text](results/3eligible_applicant_count.csv)): 
+Results (also included in [Q3](results/3eligible_applicant_count.csv)): 
 ![3](img/3.png)
 
 4. What is the rank of each applicant based on their number of family members (cnt_fam_members)? Display only the rows corresponding to the top 5 families in each housing type. 
@@ -129,7 +129,7 @@ FROM applicant_rank
 WHERE family_rank <= 5
 ORDER BY name_housing_type, family_rank; 
 ```
-Results (also included in [text](results/4family_rank.csv)): 
+Results (also included in [Q4](results/4family_rank.csv)): 
 ![4](img/4.png)
 
 5. What was the credit status of each applicant three month before their current record date? Display the results ordered by applicant and their timeline. 
@@ -147,7 +147,7 @@ FROM
 ORDER BY
     ID, months_balance;
 ```
-Results are shown in [text](results/5credit_status_3m.csv). 
+Results are shown in [Q5](results/5credit_status_3m.csv). 
 
 6. Which applicants lack any credit history? 
 ```
@@ -166,7 +166,7 @@ FULL OUTER JOIN
 WHERE
     t2.ID IS NULL;
 ```
-Results (also included in [text](results/6_no_history.csv)): 
+Results (also included in [Q4](results/6_no_history.csv)): 
 ![6](img/6.png)
 
 ## SQL Commands Used
@@ -186,4 +186,4 @@ Results (also included in [text](results/6_no_history.csv)):
 | **`ABS()` / Math** | Q3, Setup | **Numerical Transformation (Independent Feature):** Converts negative integer fields (`days_birth`) into positive, human-readable age or duration values. |
 | **`UNION ALL`** | Template | **Set Operations:** Combines the result sets of two or more `SELECT` queries into a single result set (demonstrated for combining different data segments). |
 
-More details and handwritten notes can be found in [text](SQL_handwritten_notes.pdf). 
+More details and handwritten notes can be found in this [PDF](SQL_handwritten_notes.pdf). 
